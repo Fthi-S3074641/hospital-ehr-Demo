@@ -1,0 +1,75 @@
+namespace org.acme.hospital
+
+// Participants
+abstract participant Person identified by personId {
+  o String personId
+  o String name
+}
+
+participant Patient extends Person {
+  o String[] mySymptoms optional
+  o Medication[] myMedications optional
+  o String[] myReaders
+}
+
+participant Doctor extends Person {
+  o String[] myClients
+}
+
+participant Pharmacy extends Person {
+  o String[] myClients
+}
+
+participant Nurse extends Person {
+  o String[] myClients
+}
+
+// Assets
+
+asset Privledge identified by eventId{
+  o String eventId
+}
+
+asset Medication identified by medicineId {
+  o String medicineId
+  o String description
+}
+
+asset uriEthereum identified by blockchainId {
+  o String blockchainId
+  o String urlETH
+}
+
+// Transactions
+abstract transaction PatientTransaction {
+  --> Patient mypatient
+  o DateTime when
+}
+
+transaction giveMedication extends PatientTransaction {
+  --> Doctor mydoctor
+  --> Medication mymedication
+}
+
+transaction addMedication extends PatientTransaction {
+  --> Pharmacy mypharmacy
+  --> Medication mymedication
+}
+
+transaction revokeAccess extends PatientTransaction {
+  --> Doctor mydoctor
+}
+
+transaction addMeLive {
+   --> Doctor mydoctor
+   --> Patient mypatient
+   --> Privledge myprivledge
+   --> Medication mymedication
+ }
+
+event addMeLiveEvent {
+  o String thedoctor
+  o String thepatient
+  o String themessage
+  o String themedication
+}

@@ -1,0 +1,29 @@
+{
+  "name": "hospital-ehr",
+  "version": "0.3.0",
+  "description": "it is the EHR hyperledger project",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "author": "Fthi Arefayne",
+  "email": "fthialem@gmail.com",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "chai": "latest",
+    "composer-admin": "latest",
+    "composer-common": "latest",
+    "composer-connector-embedded": "latest",
+    "eslint": "latest",
+    "istanbul": "latest",
+    "mkdirp": "latest",
+    "mocha": "latest"
+  },
+  "dependencies": {
+    "composer-client": "^0.19.4",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "grpc": "^1.11.0-pre2",
+    "socket.io": "^2.1.0",
+    "web3": "^0.19.1"
+  }
+}
